@@ -1,3 +1,37 @@
+function createAddQuoteForm() {
+    const formContainer = document.createElement("div");
+  
+    const inputText = document.createElement("input");
+    inputText.id = "newQuoteText";
+    inputText.type = "text";
+    inputText.placeholder = "Enter a new quote";
+  
+    const inputCategory = document.createElement("input");
+    inputCategory.id = "newQuoteCategory";
+    inputCategory.type = "text";
+    inputCategory.placeholder = "Enter quote category";
+  
+    const addButton = document.createElement("button");
+    addButton.textContent = "Add Quote";
+    addButton.addEventListener("click", addQuote);
+  
+    formContainer.appendChild(inputText);
+    formContainer.appendChild(inputCategory);
+    formContainer.appendChild(addButton);
+  
+    document.body.appendChild(formContainer);
+  }
+  
+  // Call createAddQuoteForm when the page loads
+  document.addEventListener("DOMContentLoaded", () => {
+    createAddQuoteForm();
+    populateCategories();
+    filterQuotes();
+  });
+  
+  // Ensure "Show New Quote" button has an event listener
+  document.getElementById("newQuote").addEventListener("click", showRandomQuote);
+  
 const SERVER_URL = "https://jsonplaceholder.typicode.com/posts";
 const syncInterval = 30000;
 let quotes = JSON.parse(localStorage.getItem("quotes")) || [];
